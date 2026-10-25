@@ -166,7 +166,7 @@ jobs:
       - name: Verify telemetry wiring
         run: |
           logs="$(docker logs rootly-mcp-server 2>&1)"
-          grep -F "PostHog MCP analytics off: AgentCat is active" <<<"$logs"
+          grep -F "PostHog MCP analytics on" <<<"$logs"
           if grep -E "could not be enabled|agentcat is not installed" <<<"$logs"; then
             echo "::error::Telemetry setup failed in the container"
             exit 1
